@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import Draggable from 'react-draggable';
 import CancelIcon from '@mui/icons-material/Cancel';
-import { Grid, IconButton, Box, Typography } from '@mui/material';
+import { Grid, IconButton, Box, Typography, TextField, Divider, Button, Popover } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 
 // Dados de exemplo
@@ -29,17 +32,53 @@ const columns = [
 
 function Historico() {
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+
+
   const [isClosed, setIsClosed] = useState(false);
+  const [stockName, setStockName] = useState('IBM'); // Valor padrão inicial
 
   const handleCloseBloco = () => {
     setIsClosed(true); // Define o estado para fechar o bloco
   };
+
+  const handleInputChange = (event) => {
+    setStockName(event.target.value); // Atualiza o nome da ação
+  };
+
+  useEffect(() => {
+    // O efeito será chamado toda vez que `stockName` mudar
+    if (stockName) {
+      console.log(`Buscando dados para a ação: ${stockName}`);
+      // Aqui, você pode chamar a API diretamente ou esperar que o componente `ApiAlphaVantage` cuide disso
+    }
+  }, [stockName]);
 
 
 
   if (isClosed) {
     return null;
   }
+
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'date-range-popover' : undefined;
+
+  const handlePeriodClick = (period) => {
+    // Lógica para ajustar as datas com base no período selecionado (1D, 5D, etc.)
+    console.log(`Período selecionado: ${period}`);
+  };
+
 
   return (
 
@@ -51,56 +90,166 @@ function Historico() {
                 <Box sx={{backgroundColor: '#333333'}}>
 
                    
-                      <Box sx={{display: 'flex'}}>
-                      <Typography sx={{fontSize: '22px', color: '#fff'}}>histórico de negociação</Typography>
+                    <Box>
 
-                        <Box>
-                          <Typography sx={{fontSize: '22px', color: '#fff'}}>IBM Inc. (IBM)</Typography>
-                        </Box>
+                      <Box sx={{ display: 'flex', alignItems: 'center', paddingTop: '8px', position: 'relative' }}>
+                            {/* Centraliza o Typography */}
+                            <Typography sx={{ fontSize: '19px', color: '#fff', flexGrow: 1, textAlign: 'center', fontWeight: 'lighter' }}>
+                              HISTÓRICO DE NEGOCIAÇÃO
+                            </Typography>
 
-                        <Box>
-                          <Typography sx={{fontSize: '20px', color: '#fff'}}>226.49</Typography>
-                          <Typography sx={{fontSize: '15px', color: '#fff'}} variant="body1">-1.54(-0.68%)</Typography>
-                          <Typography sx={{fontSize: '11px', color: '#fff'}} variant="body1">-No encerramento: 16h00 EDT</Typography>
-                        </Box>
+                            {/* Posiciona o IconButton à direita */}
+                            <Grid sx={{ position: 'absolute', right: 0 }} onClick={handleCloseBloco}>
+                              <IconButton>
+                                <CancelIcon sx={{ color: '#AFAFAF' }} />
+                              </IconButton>
+                            </Grid>
+                      </Box>
 
-                        <Box>
-                          <Typography sx={{fontSize: '20px', color: '#fff'}}>226,29</Typography>
-                          <Typography sx={{fontSize: '15px', color: '#fff'}} variant="body1">-0,20(-0,09%)</Typography>
-                          <Typography sx={{fontSize: '11px', color: '#fff'}} variant="body1">Após o expediente: 17h20 EDT</Typography>
-                        </Box>
+
+                      <Divider sx={{ backgroundColor: '#4A494C', marginY: '8px', height: '3px', }} />
+
+                      <Box sx={{display: 'flex', justifyContent: 'space-around', paddingTop: '15px'}}> 
+
+                          <Grid item xs={8}>
+
+                                <TextField 
+                                  size="small"
+                                  label="Nome da Ação" 
+                                  variant="outlined" 
+                                  value={stockName} 
+                                  onChange={handleInputChange}
+                                  fullWidth
+                                  InputLabelProps={{ style: { color: '#fff' } }}
+                                  InputProps={{
+                                    style: { color: '#fff' },
+                                    endAdornment: (
+                                      <InputAdornment position="end">
+                                        <SearchIcon sx={{ color: '#fff' }} />
+                                      </InputAdornment>
+                                    ),
+                                  }}
+                                  sx={{
+                                    '.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                                      borderColor: '#fff',
+                                    },
+                                    '&:hover .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline': {
+                                      borderColor: '#fff',
+                                    },
+                                    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                      borderColor: '#fff',
+                                    },
+                                  }}
+                                />
+                        </Grid>
+
+
+                            <Box>
+                              <Typography sx={{fontSize: '18px', color: '#fff'}}>IBM Inc. (IBM)</Typography>
+                            </Box>
+
+                            <Box>
+                              <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
+                                <Typography sx={{fontSize: '17px', color: '#fff'}}>226.49</Typography>
+                                <Typography sx={{fontSize: '17px', color: '#fff', }} variant="body1">-1.54(-0.68%)</Typography>
+                              </Box>
+
+                              <Typography sx={{fontSize: '11px', color: '#fff'}} variant="body1">-No encerramento: 16h00 EDT</Typography>
+                            </Box>
+
+                            <Box>
+                              <Box sx={{display: 'flex', justifyContent: 'space-around'}}>
+                                <Typography sx={{fontSize: '17px', color: '#fff'}}>226,29</Typography>
+                                <Typography sx={{fontSize: '17px', color: '#fff'}} variant="body1">-0,20(-0,09%)</Typography>
+                              </Box>
+                              
+                              <Typography sx={{fontSize: '11px', color: '#fff'}} variant="body1">Após o expediente: 17h20 EDT</Typography>
+                            </Box>
+
+                      </Box>
+
+                      <Divider sx={{ backgroundColor: '#4A494C', marginY: '8px', height: '3px', }} />
                         
                       </Box>
 
-                      <Box>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                          <DatePicker />
-                        </LocalizationProvider>
+                    <Box sx={{paddingBottom: '10px', marginLeft: '40px'}}>
+                            {/* Texto que abre o Popover ao ser clicado */}
 
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                          <DatePicker />
-                        </LocalizationProvider>
-                      </Box>
+                            <Box sx={{display: 'flex'}}>
+                                <Typography sx={{ color: '#fff', marginRight: '10px' }}>Período:</Typography>
+                                <Typography 
+                                  onClick={handleClick}
+                                  sx={{ cursor: 'pointer', color: '#fff' }}
+                                >
+                                  Feb 29, 2024 - Aug 29, 2024
+                                </Typography>
+                            </Box>
 
 
 
+                            {/* Popover que aparece ao clicar */}
+                            <Popover
+                              id={id}
+                              open={open}
+                              anchorEl={anchorEl}
+                              onClose={handleClose}
+                              anchorOrigin={{
+                                vertical: 'bottom',
+                                horizontal: 'left',
+                              }}
+                            >
+                              <Box sx={{ padding: '16px', paddingBottom: '15px', marginBottom: '15px' }}>
+                                {/* Botões de períodos rápidos */}
+                                <Grid container spacing={1} justifyContent="center">
+                                  {['1D', '5D', '3M', '6M', '1A', '5A', 'Máx'].map((period) => (
+                                    <Grid item key={period}>
+                                      <Button variant="outlined" onClick={() => handlePeriodClick(period)}>
+                                        {period}
+                                      </Button>
+                                    </Grid>
+                                  ))}
+                                </Grid>
+
+                                {/* Seletor de datas manual */}
+                                <Box sx={{ marginTop: '16px', display: 'flex', justifyContent: 'space-between' }}>
+                                  <LocalizationProvider dateAdapter={AdapterDayjs}>
+                                    <DatePicker
+                                      label="Data de início"
+                                      value={startDate}
+                                      onChange={(newValue) => setStartDate(newValue)}
+                                      renderInput={(params) => <TextField {...params} size="small" />}
+                                    />
+                                    <DatePicker
+                                      label="Data de término"
+                                      value={endDate}
+                                      onChange={(newValue) => setEndDate(newValue)}
+                                      renderInput={(params) => <TextField {...params} size="small" />}
+                                    />
+                                  </LocalizationProvider>
+                                </Box>
+
+                                  {/* Botões de ação */}
+                                  <Box sx={{ marginTop: '16px', display: 'flex', justifyContent: 'flex-end' }}>
+                                    <Button onClick={handleClose} sx={{ marginRight: '8px' }}>
+                                      Cancelar
+                                    </Button>
+                                    <Button variant="contained" onClick={handleClose}>
+                                      Concluído
+                                    </Button>
+                                  </Box>
+                                </Box>
+                              </Popover>
+
+                    </Box>
 
 
-
-                    <Grid sx={{display: 'flex', justifyContent: 'flex-end'}} onClick={handleCloseBloco}  >
-                          <IconButton >
-                            <CancelIcon sx={{ color: '#444444' }}  />
-                          </IconButton>
-                    </Grid>
-
-                
                 </Box>
 
 
 
 
 
-                <div style={{ height: 350, width: '100%' }}>
+                <div style={{ height: 350, width: '100%', marginTop: '0px' }}>
 
 
                   <DataGrid 
@@ -108,7 +257,7 @@ function Historico() {
                     columns={columns}
                     pageSize={5}
                     sx={{
-                      border: "4px solid #4b494c", backgroundColor: '#000', color: '#fff', borderRadius: '20px',
+                      border: "4px solid #4b494c", backgroundColor: '#000', color: '#fff', borderRadius: '0px',
                       '& .MuiDataGrid-cell': {
                         color: '#fff', // Cor do texto das células
                       },
