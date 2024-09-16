@@ -1,0 +1,110 @@
+.imgContainer {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .imgContainer img {
+    max-width: 100%;
+    display: block;
+  }
+  
+  .colGrafico {
+    display: flex;
+    align-items: flex-end;
+    padding-left: 0;
+  }
+  
+  .wrapperTextoGrafico {
+    width: 19.2%;
+    height: 20px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .TamanhoTextoGrafico_StartMovel {
+    width: 15%;
+    height: 5%;
+  }
+  
+  .LabelInputGrafico {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  
+  .TamanhoInputGrafico_StartMovel {
+    width: 16.3% !important;
+  }
+  
+  .TamanhoInputGrafico_GainReducao {
+    width: 18% !important;
+  }
+  
+  .graphQuoteInput:focus {
+    background-color: var(--color-input-background-light);
+    box-shadow: 0 0 0px 3.5px var(--color-input-box-shadow);
+  }
+  
+  .wrapperValorTotalGrafico {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-orange-primary);
+  }
+  
+  .wrapperTextoCotacaoAtualGrafico {
+    width: 102px;
+    height: 7.4%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .TextoCotacaoAtualGrafico {
+    font-size: 0.9rem;
+  }
+  
+  .textoValorGrafico {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+  
+  .TextoMenorGrafico {
+    font-size: 0.7rem;
+    font-weight: 400;
+  }
+  
+  .ValorTotalGain {
+    top: 28.5%;
+    left: 68%;
+  }
+  
+  .ValorTotalStop {
+    top: 82%;
+    left: 68%;
+  }
+  
+  .ValorTotalGain_Venda {
+    top: 28%;
+    left: 68%;
+  }
+  
+  .ValorTotalStop_Venda {
+    top: 78.5%;
+    left: 68%;
+  }
+  
+  .graphQuoteInput {
+    width: 39%;
+    height: 11px;
+    position: absolute !important;
+    background-color: transparent;
+    border-color: transparent;
+    text-align: center;
+    font-size: 70%;
+    font-weight: 400;
+  }

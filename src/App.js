@@ -9,11 +9,13 @@ import Home from './componentes/Home/Home';
 import MatrizDeOpcoes from './componentes/MatrizDeOpcoes/MatrizDeOpcoes';
 import GestaoDeCarteira from './componentes/GestaoDeCarteira/GestaoDeCarteira';
 import Historico from './componentes/Historico/Historico';
+import CompraMercado from './componentes/Ordens/compra/compra_Mercado/CompraMercado';
 import Grafico from './componentes/grafico/grafico'
 import ListagemDeOpcao from './componentes/ListagemDeOpcao/ListagemDeOpcao';
 import BlocoDeNegociacao from './componentes/BlocoDeNegociacao/BlocoDeNegociacao';
 import CandlestickChartIcon from '@mui/icons-material/CandlestickChart';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Secured from './Secured';
 import './App.css';
 
@@ -80,6 +82,15 @@ function App() {
           </ListItem>
 
           <ListItem disablePadding>
+            <ListItemButton sx={{ flexDirection: 'column', alignItems: 'center' }}>
+              <ListItemIcon sx={{ minWidth: 'auto' }}>
+                <ShoppingCartIcon sx={{ color: '#92a4c0' }} />
+              </ListItemIcon>
+              <ListItemText primary="ORDENS" primaryTypographyProps={{ fontSize: '12px', textAlign: 'center', color: '#92a4c0' }} />
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem disablePadding>
             <ListItemButton sx={{ flexDirection: 'column', alignItems: 'center' }} onClick={handleHistoryClick}>
               <ListItemIcon sx={{ minWidth: 'auto' }}>
                 <InboxIcon sx={{ color: '#92a4c0' }} />
@@ -135,6 +146,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/matriz-opcoes" element={<MatrizDeOpcoes />} />
           <Route path="/gestao-de-carteira" element={<GestaoDeCarteira />} />
+          <Route path="/compra-a-mercado" element={<CompraMercado />} />
         </Routes>
 
         {/* Renderiza todos os BlocoDeNegociacao adicionados */}
