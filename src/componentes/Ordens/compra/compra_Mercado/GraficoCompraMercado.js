@@ -2,6 +2,7 @@ import React from "react";
 import { Col, Form } from "react-bootstrap";
 import { connect } from "react-redux";
 import img from "assets/compra/CompraModeloNovo.png";
+<<<<<<< HEAD
 import IconeConfigGrafico from "shared/components/IconeConfigGrafico";
 import {
   LabelInputGrafico,
@@ -12,13 +13,21 @@ import {
 import { COMPRA_MERCADO_NAMESPACE } from "constants/ActionTypes";
 import { CalculoValorTotalAgendada } from "shared/utils/CalculoValorTotal";
 import InputGroupBoletaGraphic from "modules/boletas/components/BoletaGraphics/InputGroupBoletaGraphic";
+=======
+import InputGroupBoletaGraphic from "./InputGroupBoletaGraphic";
+import { COMPRA_MERCADO_NAMESPACE } from "./ActionTypes";
+>>>>>>> txt organizado
 
 class GraficoCompraMercado extends React.Component {
   render() {
     return (
       <Col className="colGrafico">
         <div className="imgContainer">
+<<<<<<< HEAD
           <img src={img} className="imgChart" alt="" />
+=======
+          <img src={img} className="imgChart" alt="Gráfico Compra Mercado" />
+>>>>>>> txt organizado
           <Form>
             <InputGroupBoletaGraphic
               namespace={COMPRA_MERCADO_NAMESPACE}
@@ -28,6 +37,7 @@ class GraficoCompraMercado extends React.Component {
             <Form.Control
               className="graphQuoteInput CotacaoAtualGrafico_CA"
               value={this.props.dadosPesquisa.cotacaoAtual}
+<<<<<<< HEAD
               onChange={() => false}
             />
           </Form>
@@ -64,6 +74,11 @@ class GraficoCompraMercado extends React.Component {
             className="ConfigStopGrafico_CA"
             name="venda_stopmovel"
           />
+=======
+              onChange={() => {}}
+            />
+          </Form>
+>>>>>>> txt organizado
         </div>
       </Col>
     );
@@ -71,6 +86,7 @@ class GraficoCompraMercado extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+<<<<<<< HEAD
   gainDisparo: state.compraMercadoReducer.gainDisparo,
   gainExec: state.compraMercadoReducer.gainExec,
   stopDisparo: state.compraMercadoReducer.stopDisparo,
@@ -80,3 +96,9 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {})(GraficoCompraMercado);
+=======
+  dadosPesquisa: state.compraMercadoReducer.dadosPesquisa,
+});
+
+export default connect(mapStateToProps)(GraficoCompraMercado);
+>>>>>>> txt organizado

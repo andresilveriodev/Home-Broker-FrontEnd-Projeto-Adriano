@@ -4,7 +4,11 @@ import {
   MUDAR_STOPLOSS_BOOK,
   MUDAR_GAIN_BOOK,
   MUDAR_INPUTHEADER_BOOK,
+<<<<<<< HEAD
 } from "constants/ActionTypes";
+=======
+} from "./ActionTypes";
+>>>>>>> txt organizado
 import { toast } from "react-toastify";
 
 export const mudarQtdAction = (event) => {

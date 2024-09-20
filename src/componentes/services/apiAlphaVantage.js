@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
+<<<<<<< HEAD
 import { fetchStockData } from '../Ordens/compra/compra_Mercado/services';
+=======
+import { fetchStockData } from './services';
+>>>>>>> txt organizado
 
 const ApiAlphaVantage = ({ symbol, onData }) => { // Recebe onData como prop
   useEffect(() => {

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
     MUDAR_VALIDADE_SELECT,
     MUDAR_DATA,
@@ -323,3 +324,25 @@ import {
     novoStop: 0,
     tipo: "",
   };
+=======
+import { LIMPAR_FORMS, MUDAR_QTDE } from "./ActionTypes";
+
+// Ação para limpar os formulários
+export const limparAction = (namespace) => {
+  return (dispatch) => {
+    dispatch({
+      type: `${LIMPAR_FORMS}${namespace}`,
+    });
+  };
+};
+
+// Ação para mudar a quantidade
+export const mudarQtdAction = (valor, namespace) => {
+  return (dispatch) => {
+    dispatch({
+      type: `${MUDAR_QTDE}${namespace}`,
+      payload: { qtde: valor, erro: "" },
+    });
+  };
+};
+>>>>>>> txt organizado
