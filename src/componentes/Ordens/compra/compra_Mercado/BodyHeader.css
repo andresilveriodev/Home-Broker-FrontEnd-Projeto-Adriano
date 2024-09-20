@@ -1,0 +1,87 @@
+.rowBodyHeader {
+    text-align: center;
+    justify-content: space-evenly;
+    padding: 0 1rem;
+    align-items: center;
+  }
+  
+  .rowBodyHeaderCompraStartMovel {
+    text-align: center;
+    justify-content: flex-start;
+    padding-left: 1.5rem;
+  }
+  
+  .rowBodyHeader h5 {
+    font-size: 0.8rem;
+  }
+  
+  .rowBodyHeaderCompraStartMovel h5 {
+    font-size: 0.8rem;
+  }
+  
+  .colAtivo1BodyHeader {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  .colAtivo2BodyHeader {
+    padding-left: 0;
+  }
+  
+  .colValorBodyHeader {
+    padding-right: 0;
+  }
+  
+  .colValorBodyHeader h5 {
+    font-size: 1.05rem;
+  }
+  
+  .colIconeSetaBodyHeader {
+    padding-left: 0;
+  }
+  
+  .colPorcentagemBodyHeader {
+    padding-right: 0;
+  }
+  
+  .colDataBodyHeader {
+    display: flex;
+    justify-content: center;
+    padding-top: 0.05rem;
+    padding-left: 1.4rem;
+  }
+  
+  .dataBodyHeader {
+    font-size: 80%;
+  }
+  
+  .rowToggleSwitch {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 2.5rem;
+    padding-top: 0.1rem;
+  }
+  
+  .react-switch-handle {
+    background: #000 !important;
+    border: 4px solid #444 !important;
+    height: 19px !important;
+    width: 19px !important;
+  }
+  .rowToggleSwitch > div {
+    border: 2px solid #444 !important;
+  }
+  
+  .react-switch-bg {
+    height: 21px !important;
+    width: 49px !important;
+  }
+  
+  .colModeloBodyHeader img {
+    vertical-align: unset;
+  }
+  
+  .colStrikeVencimento h5 {
+    font-family: Calibri;
+    font-size: 10pt;
+  }
