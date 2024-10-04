@@ -1,5 +1,13 @@
 import React, { useEffect } from 'react';
+<<<<<<< HEAD
 import { fetchStockData } from './services';
+=======
+<<<<<<< HEAD
+import { fetchStockData } from '../Ordens/compra/compra_Mercado/services';
+=======
+import { fetchStockData } from './services';
+>>>>>>> txt organizado
+>>>>>>> 9734d8542b7edca61416b3f77fbcbb72c526db74
 
 const ApiAlphaVantage = ({ symbol, onData }) => { // Recebe onData como prop
   useEffect(() => {

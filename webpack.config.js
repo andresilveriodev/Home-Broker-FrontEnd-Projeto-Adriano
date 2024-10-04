@@ -23,7 +23,15 @@ module.exports = {
   },
   resolve: {
     alias: {
+<<<<<<< HEAD
       components: path.resolve(__dirname, 'src/components/'), // Exemplo de alias para pastas
+=======
+<<<<<<< HEAD
+      components: path.resolve(__dirname, 'src/components/'), // Exemplo de alias para pastas
+=======
+      components: path.resolve(__dirname, 'src/components/'), // Alias para facilitar importações
+>>>>>>> txt organizado
+>>>>>>> 9734d8542b7edca61416b3f77fbcbb72c526db74
       shared: path.resolve(__dirname, 'src/shared/'),
     },
   },

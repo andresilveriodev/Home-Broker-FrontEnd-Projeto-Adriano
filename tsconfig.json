@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+      "jsx": "react", // ou "react-jsx" para React 17+
+      "target": "es5", // Define o alvo de compilação
+      "module": "commonjs", // Define o sistema de módulo
+      "baseUrl": "./src", // Base para resolver caminhos
+      "paths": {
+        "constants/*": ["constants/*"],
+        "assets/*": ["assets/*"],
+        "modules/*": ["modules/*"],
+        "shared/*": ["shared/*"]
+      },
+      "strict": true, // Ativa todas as verificações de tipo estritas
+      "esModuleInterop": true, // Facilita a interoperabilidade entre módulos ES6 e CommonJS
+      "skipLibCheck": true, // Ignora verificações de tipo nos arquivos de declaração
+      "forceConsistentCasingInFileNames": true // Garante que os nomes de arquivos sejam consistentes em termos de maiúsculas e minúsculas
+    },
+    "include": ["src/**/*"], // Inclui todos os arquivos TypeScript no diretório src
+    "exclude": ["node_modules", "dist"] // Exclui node_modules e dist da compilação
+  }
+  
